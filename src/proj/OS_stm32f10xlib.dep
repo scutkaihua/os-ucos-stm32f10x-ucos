@@ -9,7 +9,7 @@ F (.\os10x.bat)(0x5B3F149D)()
 F (..\ucos\core\os_cfg_app.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_cfg_app.o --depend .\obj\os_cfg_app.d)
 I (..\ucos\config\os_cfg_app.h)(0x544B5FBD)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -19,7 +19,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_core.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_core.o --depend .\obj\os_core.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -29,7 +29,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_dbg.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_dbg.o --depend .\obj\os_dbg.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -39,7 +39,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_flag.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_flag.o --depend .\obj\os_flag.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -49,7 +49,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_int.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_int.o --depend .\obj\os_int.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -59,7 +59,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_mem.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_mem.o --depend .\obj\os_mem.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -69,7 +69,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_msg.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_msg.o --depend .\obj\os_msg.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -79,7 +79,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_mutex.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_mutex.o --depend .\obj\os_mutex.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -89,7 +89,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_pend_multi.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_pend_multi.o --depend .\obj\os_pend_multi.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -99,7 +99,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_prio.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_prio.o --depend .\obj\os_prio.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -109,7 +109,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_q.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_q.o --depend .\obj\os_q.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -119,7 +119,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_sem.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_sem.o --depend .\obj\os_sem.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -129,7 +129,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_stat.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_stat.o --depend .\obj\os_stat.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -139,7 +139,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_task.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_task.o --depend .\obj\os_task.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -149,7 +149,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_tick.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_tick.o --depend .\obj\os_tick.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -159,7 +159,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_time.c)(0x528B321D)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_time.o --depend .\obj\os_time.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -169,7 +169,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_tmr.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_tmr.o --depend .\obj\os_tmr.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -179,7 +179,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\core\os_var.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_var.o --depend .\obj\os_var.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -189,7 +189,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 F (..\ucos\config\os_app_hooks.c)(0x4E36650E)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_app_hooks.o --depend .\obj\os_app_hooks.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
@@ -199,7 +199,7 @@ I (..\ucos\core\os_type.h)(0x4E3668C0)
 I (..\ucos\port\os_cpu.h)(0x528DCE53)
 I (..\ucos\config\os_app_hooks.h)(0x4E36650E)
 F (..\ucos\config\os_app_hooks.h)(0x4E36650E)()
-F (..\ucos\config\os_cfg.h)(0x4E36650E)()
+F (..\ucos\config\os_cfg.h)(0x5C668AE0)()
 F (..\ucos\config\os_cfg_app.h)(0x544B5FBD)()
 F (..\ucos\cpu\cpu_c.c)(0x4E3668F0)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\cpu_c.o --depend .\obj\cpu_c.d)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
@@ -215,7 +215,7 @@ I (..\ucos\cpu\cpu_cfg.h)(0x54490079)
 I (..\ucos\lib\lib_def.h)(0x5496F621)
 F (..\ucos\port\os_cpu_c.c)(0x528B2028)(-c --cpu Cortex-M3 -O3 --apcs=interwork --split_sections -I..\util -I..\ucos\core -I..\ucos\config -I..\ucos\cpu -I..\ucos\port -I..\ucos\lib-I D:\Keil\ARM\RV31\INC-I D:\Keil\ARM\CMSIS\Include-I D:\Keil\ARM\Inc\ST\STM32F10x-o .\obj\os_cpu_c.o --depend .\obj\os_cpu_c.d)
 I (..\ucos\core\os.h)(0x544B89A5)
-I (..\ucos\config\os_cfg.h)(0x4E36650E)
+I (..\ucos\config\os_cfg.h)(0x5C668AE0)
 I (..\ucos\cpu\cpu.h)(0x5496F689)
 I (..\ucos\cpu\cpu_def.h)(0x4E3668F0)
 I (..\ucos\cpu\cpu_cfg.h)(0x54490079)

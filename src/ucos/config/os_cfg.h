@@ -34,76 +34,210 @@
 #define OS_CFG_H
 
 
+
+//-------- <<< Use Configuration Wizard in Context Menu >>> -----------------                                             
                                              /* ---------------------------- MISCELLANEOUS -------------------------- */
+//<e>使用钩子
+//<i>当#define设置为1时，说明μC/OS-III的钩子函数(介入函数)可以调用用户定义的钩子函数。从而实现μC/OS-III自身的功能能够扩充，通过用户程序代码实现。
 #define OS_CFG_APP_HOOKS_EN             1u   /* Enable (1) or Disable (0) application specific hooks                  */
-#define OS_CFG_ARG_CHK_EN               1u   /* Enable (1) or Disable (0) argument checking                           */
-#define OS_CFG_CALLED_FROM_ISR_CHK_EN   1u   /* Enable (1) or Disable (0) check for called from ISR                   */
-#define OS_CFG_DBG_EN                   1u   /* Enable (1) debug code/variables                                       */
-#define OS_CFG_ISR_POST_DEFERRED_EN     1u   /* Enable (1) or Disable (0) Deferred ISR posts                          */
-#define OS_CFG_OBJ_TYPE_CHK_EN          1u   /* Enable (1) or Disable (0) object type checking                        */
+//</e>
+//<e>检测入参
+//<i>该宏决定用户是否希望对μC/OS-III的大部分函数执行参数检查，如确保传递传递给函数的指针非NULL、参数值在允许的范围内、选项是有效的等。
+//<i>当设置为0时，将禁止参数检查功能，相应的节省内核的代码空间和处理时间。
+//<i>统计发现，μC/OS-III为超过40个函数提供参数检查功能。因此，禁用此选项将节约几百字节的代码空间。
+//<i>应用中，可以考虑调试阶段开启此选项，项目的后期发布阶段禁止该选项。
+#define OS_CFG_ARG_CHK_EN               0u   /* Enable (1) or Disable (0) argument checking                           */
+//</e>
+//<e>检测中断调用
+//<i>决定内核是否进行检查以确保大多数的函数没有被ISR调用。换句话说，大多数μC/OS-III函数应该只被任务级代码调用，除了“POST”类的发送函数(它们可以被ISR调用)。
+//<i>μC/OS-III为大约50个函数提供此项检查。因此，禁用此选项，将节约几百字节的代码空间。
+//<i>应用中，可以考虑调试阶段开启此选项，项目的后期发布阶段禁止该选项。
+#define OS_CFG_CALLED_FROM_ISR_CHK_EN   0u   /* Enable (1) or Disable (0) check for called from ISR                   */
+//</e>
+//<e>调试
+//<i>当这个宏设置为1时，os_dbg.c中的ROM常量将被添加以帮助支持内核调试器。具体来说，调试器将可以通过查询一系列所谓的ROM变量，来获知编译时的选项。例如，调试器可以找出OS_TCB的尺寸大小、μC/OS-III的版本号、一个事件标志组的尺寸(OS_FLAG_GRP)等。
+#define OS_CFG_DBG_EN                   0u   /* Enable (1) debug code/variables                                       */
+//</e>
+//<e>中断post防护
+//<i>当置为1时，将减小中断延迟，因为在μC/OS-III的大多数临界段代码中将不再禁用中断。相反，在这些临界段代码执行期间，调度器将被锁定。该宏设置为1的好处是中断延迟小，但是，ISR到任务的响应时间会变得略长。如果启用了以下服务，建议设置改为1，因为若设置它为0，则中断延迟有可能会变得无法接受的长：
+//<i> Event Flags 事件标志组
+//<i> Multiple Pend 多内核对象
+#define OS_CFG_ISR_POST_DEFERRED_EN     0u   /* Enable (1) or Disable (0) Deferred ISR posts                          */
+//</e>
+//<e>检测内核对象类型
+//<i>决定是否让大多数的μC/OS-III函数检查其操作的内核对象类型是否正确。换言之，如果希望发送一个信号量，那么用户传递的是否确实是一个信号量，或者错误的使用了其他类型的内核对象呢？μC/OS-III的内核对象检查大约有30处，禁用该选项，将节约几百字节的代码空间以及部分的处理时间。
+//<i>建议调试阶段开启该选项；发布代码时关闭该检查项。
+#define OS_CFG_OBJ_TYPE_CHK_EN          0u   /* Enable (1) or Disable (0) object type checking                        */
+//</e>
+//<e>时间戳
+//<i>OS_CFG_SCHED_LOCK_TIME_MEAS_EN使能时，要开启
 #define OS_CFG_TS_EN                    1u   /* Enable (1) or Disable (0) time stamping                               */
-
+//</e>
+//<e>多事件等待
+//<i>决定代码是否支持等待多个事件(如信号量或消息队列)，启用(1)或禁用(0)。
 #define OS_CFG_PEND_MULTI_EN            1u   /* Enable (1) or Disable (0) code generation for multi-pend feature      */
-
+//</e>
+//<o>最大优先级数量
+//<i>指定应用程序可用优先级的最大数量。将该宏指定为刚好够用户计划使用的优先级数量，将减少μC/OS-III所需的RAM量。
+//<i>在μC/OS-III.中，如果OS_PRIO数据类型为CPU_INT08U，则任务优先级可以从0(最高优先级)到最大255(最低优先级)。然而在μC/OS-III中，对于优先级的数量实际上没有限制。
+//<i>具体来说，如果定义OS_PRIO数据类型为CPU_INT16U，则任务优先级将多达65536个。应该总是设置OS_CFG_PRIO_MAX为8的倍数(如8,16,32,6,4,128,256等)，设置的优先级数量越多，μC/OS-III.的RAM开销越大。
+//<i>另，μC/OS-III.为自身保留了优先级（OS_CFG_PRIO_MAX-2）和（OS_CFG_PRIO_MAX-1）；前者用于空闲任务OS_IdleTask()。此外，不要将优先级0用于任何应用程序没因为它是μC/OS-III.保留作为ISR处理任务的。因此，应用程序的优先级可以在2到（OS_CFG_PRIO_MAX-3）之间(含)取值。
 #define OS_CFG_PRIO_MAX                64u   /* Defines the maximum number of task priorities (see OS_PRIO data type) */
 
+//<e>
+//<i>
 #define OS_CFG_SCHED_LOCK_TIME_MEAS_EN  1u   /* Include code to measure scheduler lock time                           */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_SCHED_ROUND_ROBIN_EN     1u   /* Include code for Round-Robin scheduling                               */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_STK_SIZE_MIN            64u   /* Minimum allowable task stack size                                     */
 
 
-                                             /* ----------------------------- EVENT FLAGS --------------------------- */
+//</e>
+//<e>
+//<i>                                             /* ----------------------------- EVENT FLAGS --------------------------- */
 #define OS_CFG_FLAG_EN                  1u   /* Enable (1) or Disable (0) code generation for EVENT FLAGS             */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_FLAG_DEL_EN              1u   /*     Include code for OSFlagDel()                                      */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_FLAG_MODE_CLR_EN         1u   /*     Include code for Wait on Clear EVENT FLAGS                        */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_FLAG_PEND_ABORT_EN       1u   /*     Include code for OSFlagPendAbort()                                */
 
 
                                              /* -------------------------- MEMORY MANAGEMENT ------------------------ */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_MEM_EN                   1u   /* Enable (1) or Disable (0) code generation for MEMORY MANAGER          */
 
 
                                              /* --------------------- MUTUAL EXCLUSION SEMAPHORES ------------------- */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_MUTEX_EN                 1u   /* Enable (1) or Disable (0) code generation for MUTEX                   */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_MUTEX_DEL_EN             1u   /*     Include code for OSMutexDel()                                     */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_MUTEX_PEND_ABORT_EN      1u   /*     Include code for OSMutexPendAbort()                               */
 
 
                                              /* --------------------------- MESSAGE QUEUES -------------------------- */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_Q_EN                     1u   /* Enable (1) or Disable (0) code generation for QUEUES                  */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_Q_DEL_EN                 1u   /*     Include code for OSQDel()                                         */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_Q_FLUSH_EN               1u   /*     Include code for OSQFlush()                                       */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_Q_PEND_ABORT_EN          1u   /*     Include code for OSQPendAbort()                                   */
 
 
                                              /* ----------------------------- SEMAPHORES ---------------------------- */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_SEM_EN                   1u   /* Enable (1) or Disable (0) code generation for SEMAPHORES              */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_SEM_DEL_EN               1u   /*    Include code for OSSemDel()                                        */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_SEM_PEND_ABORT_EN        1u   /*    Include code for OSSemPendAbort()                                  */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_SEM_SET_EN               1u   /*    Include code for OSSemSet()                                        */
 
 
                                              /* -------------------------- TASK MANAGEMENT -------------------------- */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_STAT_TASK_EN             1u   /* Enable (1) or Disable(0) the statistics task                          */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_STAT_TASK_STK_CHK_EN     1u   /* Check task stacks from statistic task                                 */
 
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_CHANGE_PRIO_EN      1u   /* Include code for OSTaskChangePrio()                                   */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_DEL_EN              1u   /* Include code for OSTaskDel()                                          */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_Q_EN                1u   /* Include code for OSTaskQXXXX()                                        */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_Q_PEND_ABORT_EN     1u   /* Include code for OSTaskQPendAbort()                                   */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_PROFILE_EN          1u   /* Include variables in OS_TCB for profiling                             */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_REG_TBL_SIZE        1u   /* Number of task specific registers                                     */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_SEM_PEND_ABORT_EN   1u   /* Include code for OSTaskSemPendAbort()                                 */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TASK_SUSPEND_EN          1u   /* Include code for OSTaskSuspend() and OSTaskResume()                   */
 
 
                                              /* -------------------------- TIME MANAGEMENT -------------------------- */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TIME_DLY_HMSM_EN         1u   /*     Include code for OSTimeDlyHMSM()                                  */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TIME_DLY_RESUME_EN       1u   /*     Include code for OSTimeDlyResume()                                */
 
 
                                              /* ------------------------- TIMER MANAGEMENT -------------------------- */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TMR_EN                   1u   /* Enable (1) or Disable (0) code generation for TIMERS                  */
+//</e>
+//<e>
+//<i>
 #define OS_CFG_TMR_DEL_EN               1u   /* Enable (1) or Disable (0) code generation for OSTmrDel()              */
-
+//</e>
 #endif
