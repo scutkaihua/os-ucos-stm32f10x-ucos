@@ -1,0 +1,9 @@
+.\obj\rt_task.o: ..\lib\CM\rt_Task.c
+.\obj\rt_task.o: ..\lib\CM\rt_TypeDef.h
+.\obj\rt_task.o: ..\lib\CM\RTX_Config.h
+.\obj\rt_task.o: ..\lib\CM\rt_System.h
+.\obj\rt_task.o: ..\lib\CM\rt_Task.h
+.\obj\rt_task.o: ..\lib\CM\rt_List.h
+.\obj\rt_task.o: ..\lib\CM\rt_MemBox.h
+.\obj\rt_task.o: ..\lib\CM\rt_Robin.h
+.\obj\rt_task.o: ..\lib\CM\rt_HAL_CM.h

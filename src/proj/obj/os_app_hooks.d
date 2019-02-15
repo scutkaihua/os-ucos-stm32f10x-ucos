@@ -1,0 +1,11 @@
+.\obj\os_app_hooks.o: ..\ucos\config\os_app_hooks.c
+.\obj\os_app_hooks.o: ..\ucos\core\os.h
+.\obj\os_app_hooks.o: ..\ucos\config\os_cfg.h
+.\obj\os_app_hooks.o: ..\ucos\cpu\cpu.h
+.\obj\os_app_hooks.o: ..\ucos\cpu\cpu_def.h
+.\obj\os_app_hooks.o: ..\ucos\cpu\cpu_cfg.h
+.\obj\os_app_hooks.o: ..\ucos\cpu\cpu_core.h
+.\obj\os_app_hooks.o: ..\ucos\lib\lib_def.h
+.\obj\os_app_hooks.o: ..\ucos\core\os_type.h
+.\obj\os_app_hooks.o: ..\ucos\port\os_cpu.h
+.\obj\os_app_hooks.o: ..\ucos\config\os_app_hooks.h

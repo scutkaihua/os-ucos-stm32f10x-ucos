@@ -1,0 +1,13 @@
+.\obj\rt_system.o: ..\lib\CM\rt_System.c
+.\obj\rt_system.o: ..\lib\CM\rt_TypeDef.h
+.\obj\rt_system.o: ..\lib\CM\RTX_Config.h
+.\obj\rt_system.o: ..\lib\CM\rt_Task.h
+.\obj\rt_system.o: ..\lib\CM\rt_System.h
+.\obj\rt_system.o: ..\lib\CM\rt_Event.h
+.\obj\rt_system.o: ..\lib\CM\rt_List.h
+.\obj\rt_system.o: ..\lib\CM\rt_Mailbox.h
+.\obj\rt_system.o: ..\lib\CM\rt_Semaphore.h
+.\obj\rt_system.o: ..\lib\CM\rt_Time.h
+.\obj\rt_system.o: ..\lib\CM\rt_Timer.h
+.\obj\rt_system.o: ..\lib\CM\rt_Robin.h
+.\obj\rt_system.o: ..\lib\CM\rt_HAL_CM.h

@@ -1,0 +1,12 @@
+--cpu Cortex-M3
+".\obj\main.o"
+".\obj\t_mutex.o"
+".\obj\rtx_conf_cm.o"
+"..\outlib\gtOsStm32F10x.lib"
+".\obj\startup_stm32f10x_md.o"
+".\obj\svc_table.o"
+".\obj\system_stm32f10x.o"
+--strict --scatter ".\obj\OS.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\list\OS.map" -o .\obj\OS.axf
