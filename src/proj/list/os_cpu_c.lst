@@ -1,0 +1,50 @@
+L 1 "..\ucos\port\os_cpu_c.c"
+N/*
+N*********************************************************************************************************
+N*                                                uC/OS-III
+N*                                          The Real-Time Kernel
+N*
+N*
+N*                           (c) Copyright 2009-2010; Micrium, Inc.; Weston, FL
+N*                    All rights reserved.  Protected by international copyright laws.
+N*
+N*                                           ARM Cortex-M3 Port
+N*
+N* File      : OS_CPU_C.C
+N* Version   : V3.01.2
+N* By        : JJL
+N*             BAN
+N*
+N* LICENSING TERMS:
+N* ---------------
+N*             uC/OS-III is provided in source form to registered licensees ONLY.  It is 
+N*             illegal to distribute this source code to any third party unless you receive 
+N*             written permission by an authorized Micrium representative.  Knowledge of 
+N*             the source code may NOT be used to develop a similar product.
+N*
+N*             Please help us continue to provide the Embedded community with the finest
+N*             software available.  Your honesty is greatly appreciated.
+N*
+N*             You can contact us at www.micrium.com.
+N*
+N* For       : ARMv7M Cortex-M3
+N* Mode      : Thumb2
+N* Toolchain : IAR EWARM
+N*********************************************************************************************************
+N*/
+N
+N#define   OS_CPU_GLOBALS
+N
+N#ifdef VSC_INCLUDE_SOURCE_FILE_NAMES
+Sconst  CPU_CHAR  *os_cpu_c__c = "$Id: $";
+N#endif
+N
+N/*$PAGE*/
+N/*
+N*********************************************************************************************************
+N*                                             INCLUDE FILES
+N*********************************************************************************************************
+N*/
+N
+C "..\ucos\port\os_cpu_c.c" 48 17 cannot open source input file "os.h": No such file or directory
+N#include  <os.h>

@@ -20,6 +20,7 @@
 .\obj\os_app_hooks.o
 .\obj\cpu_c.o
 .\obj\cpu_core.o
+.\obj\cpu_a.o
 .\obj\os_cpu_c.o
 .\obj\os_cpu_a.o
 .\obj\lib_ascii.o

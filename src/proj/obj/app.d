@@ -1,0 +1,11 @@
+.\obj\app.o: ..\app\app\app.c
+.\obj\app.o: ..\app\app\app.h
+.\obj\app.o: ..\ucos\core\os.h
+.\obj\app.o: ..\ucos\config\os_cfg.h
+.\obj\app.o: ..\ucos\cpu\cpu.h
+.\obj\app.o: ..\ucos\cpu\cpu_def.h
+.\obj\app.o: ..\ucos\cpu\cpu_cfg.h
+.\obj\app.o: ..\ucos\cpu\cpu_core.h
+.\obj\app.o: ..\ucos\lib\lib_def.h
+.\obj\app.o: ..\ucos\core\os_type.h
+.\obj\app.o: ..\ucos\port\os_cpu.h

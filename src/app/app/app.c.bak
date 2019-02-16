@@ -1,0 +1,190 @@
+#include "app.h"
+#include "includes.h"
+#include "key.h"
+extern	OS_TCB	StartUp_TCB;					
+
+static  OS_TCB	SEM_TCB;		   				
+static	CPU_STK	Sem_Stk[TASK_SEM_STK_SIZE];	     	
+
+static  OS_TCB	KEY_TCB;		   					
+static	CPU_STK	Key_Stk[TASK_KEY_STK_SIZE];	   
+
+KEY Key1,Key2;
+OS_SEM SemOfKey;
+
+/* 
+ * 函数名：Task_Start
+ * 描述  : 启动任务，优先级为3，创建其他任务
+ * 输入  ：无
+ * 输出  : 无
+ */
+void Task_Start(void *p_arg)
+{
+	OS_ERR err;
+  (void)p_arg;	
+
+  /* 板级初始化 */	
+	BSP_Init();
+	
+  //创建信号量任务
+	OSTaskCreate((OS_TCB     *)&SEM_TCB,					            // 任务控制块指针          
+               (CPU_CHAR   *)"Sem",						              // 任务名称
+               (OS_TASK_PTR )Task_Sem,					            // 任务代码指针
+               (void       *)0,							                // 传递给任务的参数parg
+               (OS_PRIO     )TASK_SEM_PRIO,				        // 任务优先级
+               (CPU_STK    *)&Sem_Stk[0],				          // 任务堆栈基地址
+               (CPU_STK_SIZE)TASK_SEM_STK_SIZE/10,		      // 堆栈剩余警戒线
+               (CPU_STK_SIZE)TASK_SEM_STK_SIZE,			      // 堆栈大小
+               (OS_MSG_QTY  )0,							                // 可接收的最大消息队列数
+               (OS_TICK     )0,							                // 时间片轮转时间
+               (void       *)0,							                // 任务控制块扩展信息
+               (OS_OPT      )(OS_OPT_TASK_STK_CHK | 
+                              OS_OPT_TASK_STK_CLR),	        // 任务选项
+               (OS_ERR     *)&err);						              // 返回值
+			
+
+	//创建按键任务
+	OSTaskCreate((OS_TCB     *)&KEY_TCB,					  
+               (CPU_CHAR   *)"Key",						
+               (OS_TASK_PTR )Task_Key,				
+               (void       *)0,							
+               (OS_PRIO     )TASK_KEY_PRIO,				
+               (CPU_STK    *)&Key_Stk[0],				
+               (CPU_STK_SIZE)TASK_KEY_STK_SIZE/10,		
+               (CPU_STK_SIZE)TASK_KEY_STK_SIZE,			
+               (OS_MSG_QTY  )0,						
+               (OS_TICK     )0,							
+               (void       *)0,							
+               (OS_OPT      )(OS_OPT_TASK_STK_CHK | 
+                              OS_OPT_TASK_STK_CLR),	 
+               (OS_ERR     *)&err);	
+               
+  //任务删除自己	
+	OSTaskDel(&StartUp_TCB,&err);							 
+}
+
+
+/* 
+ * 函数名：Task_Sem
+ * 描述  : 用信号量模拟停车场车位管理任务，优先级为4，
+ *         
+ * 输入  ：p_arg    用户参数
+ * 输出  : 无
+ */
+void Task_Sem(void *p_arg)
+{
+  OS_ERR err;
+
+  (void)p_arg;  
+  //打印提示信息
+  printf("\r\n这是一个用信号量模拟停车场车位管理的例程\r\n");
+  printf("\r\n如果有车子进来需要停车位，请按下Key1，系统会提示现在是否有停车位\r\n");
+  printf("\r\n如果要释放停车位，请按下Key2\r\n");
+  printf("\r\n现在剩下的停车位有3个\r\n");
+  
+  //在使用信号量之前一定要先创建信号量。
+  //创建一个信号量，按键按下的时候post一个信号量给其他任务。
+  OSSemCreate ((OS_SEM      *)&SemOfKey,     //指向信号量变量的指针
+               (CPU_CHAR    *)"SemOfKey",    //信号量的名字
+               (OS_SEM_CTR   )3,             //信号量计数值Ctr代表的是停车场的车位数，3个
+               (OS_ERR      *)&err);         //错误类型
+  
+  
+  while (1)
+  {
+    
+    LED1( ON );
+    
+    OSTimeDlyHMSM(0, 0,0,500,OS_OPT_TIME_HMSM_STRICT,&err);	//延时阻塞1s
+
+    LED1( OFF);     
+    
+    OSTimeDlyHMSM(0, 0,0,500,OS_OPT_TIME_HMSM_STRICT,&err);
+
+  }
+}
+//按键定时扫描的定时器
+void cbTimerOfKey (OS_TMR *p_tmr, void *p_arg)
+{
+  OS_ERR      err;
+  CPU_TS      ts;
+  OS_SEM_CTR  Ctr;
+  
+  Key_RefreshState(&Key1);//刷新按键状态
+  Key_RefreshState(&Key2);//刷新按键状态
+  
+  if(Key_AccessTimes(&Key1,KEY_ACCESS_READ)!=0)//按键1被按下过，请求停车场
+  {
+    //获取信号量
+    Ctr= OSSemPend((OS_SEM   *)&SemOfKey,
+                   (OS_TICK   )0,                         //如果这个参数设置为0就一直等待下去
+                   (OS_OPT    )OS_OPT_PEND_NON_BLOCKING,  //如果没有信号量也不阻塞
+                   (CPU_TS   *)&ts,                       //这个参数是指向存放信号量被提交、强制解除等待状态、或者信号量被删除的时间戳        
+                   (OS_ERR   *)&err);
+    
+    //成功获取到信号量
+    if(OS_ERR_NONE==err)
+    {
+      printf("\r\nkey1被按下：成功申请到停车位，剩下停车位%d个",Ctr);
+    }
+    else if(OS_ERR_PEND_WOULD_BLOCK==err)//检查错误类型，OS_ERR_PEND_WOULD_BLOCK表示没有获取到信号量，而且选项设置为不阻塞
+    {
+      printf("\r\nkey1被按下：不好意思，现在停车场已满，请等待");
+    }
+    
+    Key_AccessTimes(&Key1,KEY_ACCESS_WRITE_CLEAR);
+  }
+  
+  if(Key_AccessTimes(&Key2,KEY_ACCESS_READ)!=0)//按键2被按下过，释放停车场
+  {
+    Ctr= OSSemPost ((OS_SEM  *)&SemOfKey,
+                    (OS_OPT   )OS_OPT_POST_ALL,
+                    (OS_ERR  *)&err);
+    
+    printf("\r\nkey2被按下：停车位已经释放，现在停车场剩下的停车位有%d个",Ctr);
+    
+    Key_AccessTimes(&Key2,KEY_ACCESS_WRITE_CLEAR);
+  }
+  
+}
+/* 
+ * 函数名：Task_Key
+ * 描述  : 按键的初始化和创建定时器对按键进行扫描
+ *			   优先级为OS_CFG_PRIO_MAX-5u
+ * 输入  ：p_arg    用户参数
+ * 输出  : 无
+ */
+void Task_Key(void *p_arg)
+{
+  OS_ERR err;  
+  OS_TMR TmrOfKey;
+
+  (void)p_arg;
+  //初始化按键管脚
+  Key1_GPIO_Config();
+  Key2_GPIO_Config();
+  //创建一个按键，按键的具体细节如无兴趣可不管
+  KeyCreate(&Key1,GetPinStateOfKey1);
+  KeyCreate(&Key2,GetPinStateOfKey2);
+  //创建一个定时器，用来定时扫描按键状态,10m扫描一次按键
+  OSTmrCreate ((OS_TMR              *)&TmrOfKey,
+               (CPU_CHAR            *)"TmrOfKey",
+               (OS_TICK              )0,
+               (OS_TICK              )1,  //注意定时器定时的单位在例程中是10ms，所以这里用1就可以
+               (OS_OPT               )OS_OPT_TMR_PERIODIC,
+               (OS_TMR_CALLBACK_PTR  )cbTimerOfKey,
+               (void                *)0,
+               (OS_ERR              *)&err);
+               
+  //开启定时器
+  OSTmrStart (&TmrOfKey,&err);
+  
+  while (1)
+  {
+    OSTimeDly ((OS_TICK   )1000,
+               (OS_OPT    )OS_OPT_TIME_DLY,
+               (OS_ERR   *)&err);
+  }
+}
+
+/* -------------------------------------end of file------------------------------------ */
